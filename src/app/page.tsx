@@ -65,10 +65,31 @@ export default function Home() {
         </div>
         <div className="mt-8">
           <Link
+            href="/resume"
+            className="text-sm text-sky-400 hover:text-sky-300 underline"
+          >
+            Go to Resume
+          </Link>
+          <br></br>
+          <Link
+            href="/projects"
+            className="text-sm text-sky-400 hover:text-sky-300 underline"
+          >
+            Go to Projects
+          </Link>
+          <br></br>
+          <Link
+            href="/hashes"
+            className="text-sm text-sky-400 hover:text-sky-300 underline"
+          >
+            Go to Hashes
+          </Link>
+          <br></br>
+          <Link
             href="/about"
             className="text-sm text-sky-400 hover:text-sky-300 underline"
           >
-            Go to About (transition test)
+            Go to About
           </Link>
         </div>
       </main>
