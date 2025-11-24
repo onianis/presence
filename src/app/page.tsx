@@ -27,37 +27,32 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
+          <Link
             className="flex font-mono h-12 w-full items-center justify-center rounded-full border border-solid border-black/8 px-5 transition-colors hover:border-transparent hover:bg-black/4 dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
             href="/resume"
-            rel="noopener noreferrer"
           >
             Resume
-          </a>
-          <a
+          </Link>
+          <Link
             className="flex font-mono h-12 w-full items-center justify-center rounded-full border border-solid border-black/8 px-5 transition-colors hover:border-transparent hover:bg-black/4 dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
             href="/projects"
-            rel="noopener noreferrer"
           >
             Projects
-          </a>
-          <a
+          </Link>
+          <Link
             className="flex font-mono h-12 w-full items-center justify-center rounded-full border border-solid border-black/8 px-5 transition-colors hover:border-transparent hover:bg-black/4 dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
             href="/hashes"
-            rel="noopener noreferrer"
           >
             Hashes
-          </a>
-          <a
+          </Link>
+          <Link
             className="flex font-mono h-12 w-full items-center justify-center rounded-full border border-solid border-black/8 px-5 transition-colors hover:border-transparent hover:bg-black/4 dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
             href="/about"
-            rel="noopener noreferrer"
           >
             About
-          </a>
+          </Link>
         </div>
-        <div className="mt-8">
-        </div>
+        <div className="mt-8"></div>
       </main>
     </div>
   );

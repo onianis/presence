@@ -20,7 +20,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-20 border-b border-black/5 bg-white/80 backdrop-blur dark:border-white/10 dark:bg-black/80">
       <nav className="mx-auto flex h-14 max-w-3xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/resume" className="text-sm font-display tracking-tight">
+        <Link href="/" className="text-sm font-display tracking-tight">
           Presence
         </Link>
 
