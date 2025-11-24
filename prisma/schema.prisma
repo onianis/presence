@@ -6,3 +6,142 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+/* ENUMS */
+enum LanguageLevel {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C1_2
+  C2
+  FLUENT
+  NATIVE
+}
+/* ================ */
+
+
+/* WORK EXPERIENCE RELATED MODELS */
+model WorkExperience {
+  id                Int                       @id @default(autoincrement())
+  title             String
+  company           String
+  companyLogoUrl    String?
+  location          String
+  startDate         DateTime
+  endDate           DateTime?
+
+  workTypeId        Int
+  workType          WorkType                  @relation(fields: [workTypeId], references: [id], onDelete: Cascade)
+
+  skills            WorkExperienceSkill[]
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model WorkType {
+  id                Int                       @id @default(autoincrement())
+  name              String                    @unique
+  workExperiences   WorkExperience[]
+}
+
+model Skill {
+  id                Int                       @id @default(autoincrement())
+  name              String                    @unique
+  category          String?
+
+  workExperiences   WorkExperienceSkill[]
+
+  certificates      CertificateSkill[]
+}
+
+model WorkExperienceSkill {
+  workExperienceId   Int
+  skillId            Int
+
+  workExperience     WorkExperience            @relation(fields: [workExperienceId], references: [id], onDelete: Cascade)
+  skill              Skill                     @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([workExperienceId, skillId])
+}
+/* ================ */
+
+/* LANGUAGE PROFICIENCY MODEL */
+model Language {
+  id                 Int                      @id @default(autoincrement())
+  fullName           String                   @unique
+  abbrv              String                   @unique
+  level              LanguageLevel
+}
+
+/* ================ */
+
+/* CERTIFICATE MODELS */
+model Certificate {
+  id                 Int                      @id @default(autoincrement())
+  name               String
+  issuingOrg         String
+  issuingOrgLogoUrl  String?
+  issueDate          DateTime
+  expirationDate     DateTime?
+  credentialId       String?
+  credentialUrl      String?
+
+  skills             CertificateSkill[]
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model CertificateSkill {
+  certificateId  Int
+  skillId        Int
+
+  certificate    Certificate  @relation(fields: [certificateId], references: [id], onDelete: Cascade)
+  skill          Skill        @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([certificateId, skillId])
+}
+/* ================ */
+
+/* AWARDS MODEL */
+model Award {
+  id            Int       @id @default(autoincrement())
+  title         String
+  issuer        String
+  issuerLogoUrl String?
+  issueDate     DateTime
+  description   String[]
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+/* ================ */
+
+/* CONTACT MODEL */
+model ContactMethod {
+  id        Int @id @default(autoincrement())
+  name      String
+  uri       String
+  iconUrl   String?
+}
+/* ================ */
+
+/* PROJECT MODEL */
+model Project {
+  id          Int      @id @default(autoincrement())
+  name        String
+  shortDesc   String
+  bulletPoints String[]
+  repoOwner   String?
+  projectUrl  String?
+  repoUrl     String?
+  languages   Json?
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+/* ================ */
+
