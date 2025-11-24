@@ -44,6 +44,7 @@ model WorkExperience {
 model WorkType {
   id                Int                       @id @default(autoincrement())
   name              String                    @unique
+
   workExperiences   WorkExperience[]
 }
 
@@ -145,3 +146,48 @@ model Project {
 }
 /* ================ */
 
+/* BLOG MODEL */
+model BlogPost {
+  id Int @id @default(autoincrement())
+  title String
+  slug String @unique
+  content String
+  publishedAt DateTime?
+
+  blogTags BlogPostTags[]
+
+  authorId Int
+  author BlogAuthor @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model BlogAuthor {
+  id Int @id @default(autoincrement())
+  fullName String
+  alias String?
+  profileImageUrl String?
+
+  posts BlogPost[]
+}
+
+model BlogTag {
+  id Int @id @default(autoincrement())
+  name String @unique
+
+  blogPosts BlogPostTags[]
+}
+
+model BlogPostTags {
+  blogPostId Int
+  blogTagId Int
+
+  blogPost BlogPost @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+  blogTag BlogTag @relation(fields: [blogTagId], references: [id], onDelete: Cascade)
+
+  @@id([blogPostId, blogTagId])
+  @@index([blogTagId], name: "byTag")
+}
+
+/* =============== */
