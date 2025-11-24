@@ -32,6 +32,12 @@ export default function Home() {
           </Link>
           <Link
             className="flex h-12 w-full items-center justify-center rounded-full border border-border bg-primary-20 font-mono text-accent-1 px-5 transition-colors hover:bg-primary-10 md:w-[158px]"
+            href="/blog"
+          >
+            Blog
+          </Link>
+          <Link
+            className="flex h-12 w-full items-center justify-center rounded-full border border-border bg-primary-20 font-mono text-accent-1 px-5 transition-colors hover:bg-primary-10 md:w-[158px]"
             href="/hashes"
           >
             Hashes
