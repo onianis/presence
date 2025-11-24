@@ -3,13 +3,61 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Primary colors */
+  --primary-0: #630b0c;
+  --primary-10: #530e0a;
+  --primary-20: #440f09;
+  --primary-30: #350f06;
+  --primary-40: #270d04;
+  --primary-50: #190702;
+
+  /* Accent colors */
+  --accent-0: #e6eb8f;
+  --accent-1: #f5f7d5;
+  --accent-10: #bcc076;
+  --accent-20: #93965e;
+  --accent-30: #6c6e46;
+  --accent-40: #484930;
+  --accent-50: #26271c;
+
+  /* Danger colors */
+  --danger-0: #b41c2b;
+  --danger-10: #851d22;
+  --danger-20: #581919;
+  --danger-30: #2f1310;
+
+  /* Success colors */
+  --success-0: #009f42;
+  --success-10: #167533;
+  --success-20: #184d25;
+  --success-30: #132916;
+
+  /* Warning colors */
+  --warning-0: #f0ad4e;
+  --warning-10: #af7f3c;
+  --warning-20: #71532a;
+  --warning-30: #392b19;
+
+  /* Info colors */
+  --info-0: #388cfa;
+  --info-10: #3267b5;
+  --info-20: #284475;
+  --info-30: #1a253b;
+
+  /* Neutral colors */
+  --neutral-0: #ffffff;
+  --neutral-10: #c6c6c6;
+  --neutral-20: #919191;
+  --neutral-30: #5e5e5e;
+  --neutral-40: #303030;
+  --neutral-50: #000000;
 }
 
 /* Custom fonts */
 @font-face {
   font-family: "Mozilla Text";
-  src:
-    url("/fonts/MozillaText-Variable.woff2") format("woff2-variations"),
+  src: url("/fonts/MozillaText-Variable.woff2") format("woff2-variations"),
     url("/fonts/MozillaText-Variable.woff2") format("woff2");
   font-weight: 300 900;
   font-style: normal;
@@ -18,13 +66,12 @@
 
 @font-face {
   font-family: "Mozilla Headline";
-  src:
-    url("/fonts/MozillaHeadline-Variable.woff2") format("woff2-variations"),
+  src: url("/fonts/MozillaHeadline-Variable.woff2") format("woff2-variations"),
     url("/fonts/MozillaHeadline-Variable.woff2") format("woff2");
   font-weight: 300 900;
   font-stretch: 75% 125%;
   font-style: normal;
-  font-display: swap; 
+  font-display: swap;
 }
 
 @font-face {
@@ -34,23 +81,60 @@
   font-style: normal;
   font-display: swap;
 }
-/* ============ */ 
+/* ============ */
 
 :root {
   --font-sans: "Mozilla Text", system-ui, -apple-system, BlinkMacSystemFont,
-  "Segoe UI", sans-serif;
+    "Segoe UI", sans-serif;
 
   --font-mono: "Morequiet", ui-monospace, SFMono-Regular, Menlo, Monaco,
-  Consolas, "Liberation Mono", "Courier New", monospace;
+    Consolas, "Liberation Mono", "Courier New", monospace;
 
   --font-display: "Mozilla Headline", system-ui, -apple-system,
-  BlinkMacSystemFont, "Segoe UI", sans-serif;
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 @theme inline {
+  /* existing */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
+  /* Surfaces & neutrals */
+  --color-surface: var(--neutral-0);
+  --color-surface-muted: var(--neutral-10);
+  --color-surface-strong: var(--neutral-40);
+
+  --color-border: var(--neutral-20);
+  --color-muted-foreground: var(--neutral-30);
+
+  /* Primary brand */
+  --color-primary: var(--primary-0);
+  --color-primary-10: var(--primary-10);
+  --color-primary-20: var(--primary-20);
+  --color-primary-30: var(--primary-30);
+  --color-primary-40: var(--primary-40);
+  --color-primary-50: var(--primary-50);
+
+  /* Accent */
+  --color-accent: var(--accent-0);
+  --color-accent-soft: var(--accent-1);
+  --color-accent-10: var(--accent-10);
+  --color-accent-20: var(--accent-20);
+  --color-accent-30: var(--accent-30);
+  --color-accent-40: var(--accent-40);
+  --color-accent-50: var(--accent-50);
+
+  /* Semantic status colors */
+  --color-danger: var(--danger-0);
+  --color-danger-soft: var(--danger-10);
+  --color-success: var(--success-0);
+  --color-success-soft: var(--success-10);
+  --color-warning: var(--warning-0);
+  --color-warning-soft: var(--warning-10);
+  --color-info: var(--info-0);
+  --color-info-soft: var(--info-10);
+
+  /* Fonts */
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-display: var(--font-display);
