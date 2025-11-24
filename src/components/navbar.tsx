@@ -18,9 +18,9 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-20 border-b border-black/5 bg-white/80 backdrop-blur dark:border-white/10 dark:bg-black/80">
+    <header className="sticky top-0 z-20 border-b border-white/10 bg-primary-40">
       <nav className="mx-auto flex h-14 max-w-3xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="text-sm font-display tracking-tight">
+        <Link href="/" className="text-sm font-display tracking-tight text-accent">
           Presence
         </Link>
 
@@ -34,8 +34,8 @@ export function Navbar() {
                 className={
                   "rounded-full px-3 py-1 transition-colors " +
                   (isActive
-                    ? "bg-black text-white dark:bg-zinc-50 dark:text-black"
-                    : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900")
+                    ? "bg-accent-10 text-primary"
+                    : "text-accent-10 hover:bg-primary-20")
                 }
               >
                 {label}
