@@ -19,6 +19,23 @@ enum LanguageLevel {
   FLUENT
   NATIVE
 }
+
+enum WorkTypeEnum {
+  FULL_TIME_INPERSON
+  FULL_TIME_REMOTE
+  FULL_TIME_HYBRID
+  PART_TIME_INPERSON
+  PART_TIME_REMOTE
+  PART_TIME_HYBRID
+  CONTRACT
+  INTERNSHIP_INPERSON
+  INTERNSIP_REMOTE
+  INTERNSHIP_HYBRID
+  WERKSTUDENT_INPERSON
+  WERKSTUDENT_REMOTE
+  WERKSTUDENT_HYBRID
+  HIWI
+}
 /* ================ */
 
 
@@ -32,20 +49,13 @@ model WorkExperience {
   startDate         DateTime
   endDate           DateTime?
 
-  workTypeId        Int
-  workType          WorkType                  @relation(fields: [workTypeId], references: [id], onDelete: Cascade)
+  workType          WorkTypeEnum
+  description       String[]
 
   skills            WorkExperienceSkill[]
 
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-}
-
-model WorkType {
-  id                Int                       @id @default(autoincrement())
-  name              String                    @unique
-
-  workExperiences   WorkExperience[]
 }
 
 model Skill {
