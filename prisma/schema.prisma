@@ -41,52 +41,44 @@ enum WorkTypeEnum {
 
 /* WORK EXPERIENCE RELATED MODELS */
 model WorkExperience {
-  id                Int                       @id @default(autoincrement())
-  title             String
-  company           String
-  companyLogoUrl    String?
-  location          String
-  startDate         DateTime
-  endDate           DateTime?
-
-  workType          WorkTypeEnum
-  description       String[]
-
-  skills            WorkExperienceSkill[]
-
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id              Int                       @id @default(autoincrement())
+  title           String
+  company         String
+  companyLogoUrl  String?
+  location        String
+  startDate       DateTime
+  endDate         DateTime?
+  workType        WorkTypeEnum
+  description     String[]
+  skills          WorkExperienceSkill[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 model Skill {
-  id                Int                       @id @default(autoincrement())
-  name              String                    @unique
-  category          String?
-
-  workExperiences   WorkExperienceSkill[]
-
-  certificates      CertificateSkill[]
+  id               Int                    @id @default(autoincrement())
+  name             String                 @unique
+  category         String?
+  workExperiences  WorkExperienceSkill[]
+  certificates     CertificateSkill[]
 }
 
 model WorkExperienceSkill {
   workExperienceId   Int
   skillId            Int
-
   workExperience     WorkExperience            @relation(fields: [workExperienceId], references: [id], onDelete: Cascade)
   skill              Skill                     @relation(fields: [skillId], references: [id], onDelete: Cascade)
-
   @@id([workExperienceId, skillId])
 }
 /* ================ */
 
 /* LANGUAGE PROFICIENCY MODEL */
 model Language {
-  id                 Int                      @id @default(autoincrement())
-  fullName           String                   @unique
-  abbrv              String                   @unique
-  level              LanguageLevel
+  id        Int                      @id @default(autoincrement())
+  fullName  String                   @unique
+  abbrv     String                   @unique
+  level     LanguageLevel
 }
-
 /* ================ */
 
 /* CERTIFICATE MODELS */
@@ -99,20 +91,16 @@ model Certificate {
   expirationDate     DateTime?
   credentialId       String?
   credentialUrl      String?
-
   skills             CertificateSkill[]
-
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
 }
 
 model CertificateSkill {
   certificateId  Int
   skillId        Int
-
   certificate    Certificate  @relation(fields: [certificateId], references: [id], onDelete: Cascade)
   skill          Skill        @relation(fields: [skillId], references: [id], onDelete: Cascade)
-
   @@id([certificateId, skillId])
 }
 /* ================ */
@@ -125,9 +113,8 @@ model Award {
   issuerLogoUrl String?
   issueDate     DateTime
   description   String[]
-
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 /* ================ */
 
@@ -142,17 +129,16 @@ model ContactMethod {
 
 /* PROJECT MODEL */
 model Project {
-  id          Int      @id @default(autoincrement())
-  name        String
-  shortDesc   String
-  bulletPoints String[]
-  repoOwner   String?
-  projectUrl  String?
-  repoUrl     String?
-  languages   Json?
-
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id            Int       @id @default(autoincrement())
+  name          String
+  shortDesc     String
+  bulletPoints  String[]
+  repoOwner     String?
+  projectUrl    String?
+  repoUrl       String?
+  languages     Json?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 /* ================ */
 
@@ -163,41 +149,47 @@ model BlogPost {
   slug String @unique
   content String
   publishedAt DateTime?
-
   blogTags BlogPostTags[]
-
   authorId Int
   author BlogAuthor @relation(fields: [authorId], references: [id], onDelete: Cascade)
-
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
 
 model BlogAuthor {
-  id Int @id @default(autoincrement())
-  fullName String
-  alias String?
-  profileImageUrl String?
-
-  posts BlogPost[]
+  id               Int        @id @default(autoincrement())
+  fullName         String
+  alias            String?
+  profileImageUrl  String?
+  posts            BlogPost[]
 }
 
 model BlogTag {
-  id Int @id @default(autoincrement())
-  name String @unique
-
-  blogPosts BlogPostTags[]
+  id         Int              @id @default(autoincrement())
+  name       String         @unique
+  blogPosts  BlogPostTags[]
 }
 
 model BlogPostTags {
-  blogPostId Int
-  blogTagId Int
-
-  blogPost BlogPost @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
-  blogTag BlogTag @relation(fields: [blogTagId], references: [id], onDelete: Cascade)
-
+  blogPostId  Int
+  blogTagId   Int
+  blogPost    BlogPost @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+  blogTag     BlogTag @relation(fields: [blogTagId], references: [id], onDelete: Cascade)
   @@id([blogPostId, blogTagId])
   @@index([blogTagId], name: "byTag")
 }
 
+/* =============== */
+
+/* EDUCATION ENTRY */
+model Education {
+  id            Int       @id @default(autoincrement())
+  name          String
+  logoUrl       String?
+  subtitle      String
+  startDate     DateTime
+  endDate       DateTime?
+  description   String?
+  createdAt     DateTime  @default(now())
+}
 /* =============== */
