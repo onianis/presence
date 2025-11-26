@@ -101,6 +101,7 @@ model CertificateSkill {
   skillId        Int
   certificate    Certificate  @relation(fields: [certificateId], references: [id], onDelete: Cascade)
   skill          Skill        @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  
   @@id([certificateId, skillId])
 }
 /* ================ */
@@ -144,16 +145,16 @@ model Project {
 
 /* BLOG MODEL */
 model BlogPost {
-  id Int @id @default(autoincrement())
-  title String
-  slug String @unique
-  content String
-  publishedAt DateTime?
-  blogTags BlogPostTags[]
-  authorId Int
-  author BlogAuthor @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id            Int             @id @default(autoincrement())
+  title         String
+  slug          String          @unique
+  content       String
+  publishedAt   DateTime?
+  blogTags      BlogPostTags[]
+  authorId      Int
+  author        BlogAuthor      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
 }
 
 model BlogAuthor {
@@ -166,7 +167,7 @@ model BlogAuthor {
 
 model BlogTag {
   id         Int              @id @default(autoincrement())
-  name       String         @unique
+  name       String           @unique
   blogPosts  BlogPostTags[]
 }
 
@@ -175,6 +176,7 @@ model BlogPostTags {
   blogTagId   Int
   blogPost    BlogPost @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
   blogTag     BlogTag @relation(fields: [blogTagId], references: [id], onDelete: Cascade)
+
   @@id([blogPostId, blogTagId])
   @@index([blogTagId], name: "byTag")
 }
