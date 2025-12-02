@@ -175,7 +175,7 @@ export function Navbar() {
 
       {/* Mobile bottom bar (below md) */}
       <div className="fixed bottom-0 inset-x-0 z-20 border-t border-white/10 bg-primary-40 md:hidden">
-        <nav className="mx-auto flex h-14 max-w-3xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <nav className="mx-auto flex h-14 max-w-3xl items-center px-4 sm:px-6 lg:px-8">
           {/* Brand (small) */}
           <Link
             href="/"
@@ -191,12 +191,12 @@ export function Navbar() {
             <span className="text-lg">shota oniani</span>
           </Link>
 
-          {/* Mobile hamburger */}
+          {/* Expandable touch area to the right of the brand opens the menu */}
           <button
             type="button"
             aria-label="Open navigation menu"
             onClick={() => setIsOpen(true)}
-            className="inline-flex items-center justify-center rounded-full text-accent-10 hover:bg-primary-20"
+            className="ml-3 flex-1 h-10 inline-flex items-center justify-end rounded-full text-accent-10 hover:bg-primary-20"
           >
             <span className="sr-only">Open navigation menu</span>
             <Image
