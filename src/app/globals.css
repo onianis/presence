@@ -11,6 +11,9 @@
   --primary-30: #350f06;
   --primary-40: #270d04;
   --primary-50: #190702;
+  --primary-50: rgba(53, 15, 6, 0.915);
+
+  
 
   /* Accent colors */
   --accent-0: #e6eb8f;
