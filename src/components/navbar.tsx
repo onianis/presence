@@ -63,9 +63,7 @@ export function Navbar() {
                 className="inline-block"
                 initial={false}
                 animate={
-                  isLogoHovered
-                    ? { x: 65 }
-                    : { x: 0 } // adjust until "shota oniani" looks tight with a normal space
+                  isLogoHovered ? { x: 65 } : { x: 0 } // adjust until "shota oniani" looks tight with a normal space
                 }
                 transition={{ duration: 0.22, ease: "easeOut" }}
               >
@@ -106,7 +104,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop nav with hover icon/text swap */}
-          <div className="flex items-center gap-2 font-display tracking-tight">
+          <div className="flex items-center gap-2 font-display font-bold tracking-tight">
             {NAV_LINKS.map(({ href, label }) => {
               const isActive = pathname === href;
               const isHovered = hoveredLabel === label;
@@ -249,7 +247,11 @@ export function Navbar() {
                       height={32}
                       className="rounded-sm"
                     />
-                    <span>shota <span className="text-sm text-accent-20">(sotiris)</span> oniani</span>
+                    <span>
+                      shota{" "}
+                      <span className="text-sm text-accent-20">(sotiris)</span>{" "}
+                      oniani
+                    </span>
                   </Link>
 
                   <button
