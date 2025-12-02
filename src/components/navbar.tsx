@@ -38,15 +38,15 @@ export function Navbar() {
           {/* Brand */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-display text-xl p-2 rounded-lg tracking-tight text-accent hover:bg-primary-50 transition-colors duration-200 ease-in-out"
+            className="flex items-center gap-2 font-display font-light text-2xl p-2 rounded-sm tracking-tight text-accent hover:bg-primary-50 transition-colors duration-200 ease-in-out"
             onMouseEnter={() => setIsLogoHovered(true)}
             onMouseLeave={() => setIsLogoHovered(false)}
           >
             <Image
               src="/icons/logo_color_64.png"
               alt="Presence logo"
-              width={24}
-              height={24}
+              width={32}
+              height={32}
               className="rounded-sm translate-y-px"
             />
 
@@ -87,7 +87,7 @@ export function Navbar() {
                         opacity: 1,
                         scaleX: 1,
                         scaleY: 1,
-                        x: -58, // pull it into the space between first and last name
+                        x: -69, // pull it into the space between first and last name
                         color: "var(--accent-20)",
                       }
                     : {
@@ -112,7 +112,7 @@ export function Navbar() {
               const isHovered = hoveredLabel === label;
 
               const baseClasses =
-                "relative rounded-full cursor-pointer flex items-center transition-colors";
+                "relative rounded-sm cursor-pointer flex items-center transition-colors";
 
               // Only vertical padding changes; horizontal stays fixed
               const paddingClasses = isHovered ? "px-3 py-2" : "px-3 py-1";
@@ -186,11 +186,11 @@ export function Navbar() {
             <Image
               src="/icons/logo_color_64.png"
               alt="Presence logo"
-              width={20}
-              height={20}
+              width={32}
+              height={32}
               className="rounded-sm"
             />
-            <span>shota oniani</span>
+            <span className="text-lg">shota oniani</span>
           </Link>
 
           {/* Mobile hamburger */}
@@ -237,19 +237,19 @@ export function Navbar() {
             >
               <div className="mx-auto max-w-3xl px-4 py-4 sm:px-6 lg:px-8">
                 {/* Top row in sheet: brand + close */}
-                <div className="flex items-center mb-10 justify-between">
+                <div className="flex items-center mb-10 my-3 mt-0 justify-between">
                   <Link
                     href="/"
-                    className="flex items-center gap-2 text-sm font-display tracking-tight text-accent"
+                    className="flex items-center gap-2 text-lg font-display tracking-tight text-accent"
                   >
                     <Image
                       src="/icons/logo_color_64.png"
                       alt="Presence logo"
-                      width={20}
-                      height={20}
+                      width={32}
+                      height={32}
                       className="rounded-sm"
                     />
-                    <span>shota oniani</span>
+                    <span>shota <span className="text-sm text-accent-20">(sotiris)</span> oniani</span>
                   </Link>
 
                   <button
@@ -283,7 +283,7 @@ export function Navbar() {
                           href={href}
                           onClick={closeMenu}
                           className={
-                            "block rounded-lg px-3 py-2 transition-colors w-full " +
+                            "block rounded-sm px-3 py-2 transition-colors w-full " +
                             (isActive
                               ? "bg-accent-10 text-primary"
                               : "text-accent-1 hover:bg-primary-30")
