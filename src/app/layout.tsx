@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "The Presence Web Portfolio",
@@ -14,11 +15,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-background text-foreground font-sans">
-        { }
+      <body className="antialiased bg-background text-foreground font-sans flex min-h-screen flex-col">
+        {/* Global nav */}
         <Navbar />
-        { }
-        {children}
+
+        {/* Page content + footer container */}
+        <div className="flex min-h-screen flex-col pb-14 md:pb-0">
+          {/* Main route content grows to push footer down */}
+          <div className="flex-1">
+            {children}
+          </div>
+
+          {/* Global footer */}
+          <Footer />
+        </div>
       </body>
     </html>
   );
