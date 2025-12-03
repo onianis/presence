@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import { VantaBackground } from "@/components/vanta-background";
 
 export const metadata: Metadata = {
-  title: "The Presence Web Portfolio",
+  title: "shota oniani",
   description: "Shota Sotiris Oniani on the web",
 };
 
