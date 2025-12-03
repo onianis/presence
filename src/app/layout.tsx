@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { GlobalBackground } from "@/components/global-background";
+import { VantaBackground } from "@/components/vanta-background";
 
 export const metadata: Metadata = {
   title: "The Presence Web Portfolio",
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased bg-background text-foreground font-sans flex min-h-screen flex-col">
-        <GlobalBackground />
+        <VantaBackground />
 
         {/* Global nav */}
         <Navbar />
