@@ -40,7 +40,7 @@ export function Navbar() {
           supports-backdrop-filter:bg-(--glass-bg)
         "
       >
-        <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 md:px-0">
           {/* Brand */}
           <Link
             href="/"
