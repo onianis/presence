@@ -4,6 +4,9 @@
   --background: #270d04;
   --foreground: #f5f7d5;
 
+  --glass-bg: rgba(39, 13, 4, 0.5); /* base background w/ alpha */
+  --glass-border: rgba(230, 235, 143, 0.32);
+
   /* Primary colors */
   --primary-0: #630b0c;
   --primary-10: #530e0a;
@@ -11,9 +14,7 @@
   --primary-30: #350f06;
   --primary-40: #270d04;
   --primary-50: #190702;
-  --primary-50: rgba(53, 15, 6, 0.915);
-
-  
+  --primary-50: #350f06;
 
   /* Accent colors */
   --accent-0: #e6eb8f;
