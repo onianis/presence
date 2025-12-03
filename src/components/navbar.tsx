@@ -44,7 +44,7 @@ export function Navbar() {
           {/* Brand */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-display font-light text-2xl p-2 rounded-sm tracking-tight text-accent hover:bg-primary-50 transition-colors duration-200 ease-in-out"
+            className="flex items-center gap-1 font-display font-light text-2xl p-2 rounded-sm tracking-tight text-accent hover:bg-primary-50 transition-colors duration-200 ease-in-out"
             onMouseEnter={() => setIsLogoHovered(true)}
             onMouseLeave={() => setIsLogoHovered(false)}
           >
@@ -57,7 +57,7 @@ export function Navbar() {
             />
 
             {/* Name row (no reserved space between shota and oniani) */}
-            <div className="flex items-baseline relative">
+            <div className="flex items-baseline relative *:font-display *:font-bold *:tracking-tighter">
               {/* First name + a normal space */}
               <span>shota&nbsp;</span>
 
@@ -69,7 +69,7 @@ export function Navbar() {
                 className="inline-block"
                 initial={false}
                 animate={
-                  isLogoHovered ? { x: 65 } : { x: 0 } // adjust until "shota oniani" looks tight with a normal space
+                  isLogoHovered ? { x: 63 } : { x: 0 } // adjust until "shota oniani" looks tight with a normal space
                 }
                 transition={{ duration: 0.22, ease: "easeOut" }}
               >
@@ -91,7 +91,7 @@ export function Navbar() {
                         opacity: 1,
                         scaleX: 1,
                         scaleY: 1,
-                        x: -69, // pull it into the space between first and last name
+                        x: -64, // pull it into the space between first and last name
                         color: "var(--accent-20)",
                       }
                     : {
@@ -102,7 +102,7 @@ export function Navbar() {
                         color: "var(--primary-40)",
                       }
                 }
-                transition={{ duration: 0.22, ease: "linear" }}
+                transition={{ duration: 0.15, ease: "easeInOut" }}
               >
                 &nbsp;(sotiris)
               </motion.span>
@@ -193,7 +193,7 @@ export function Navbar() {
           {/* Brand (small) */}
           <Link
             href="/"
-            className="flex items-center gap-2 text-sm font-display tracking-tight text-accent"
+            className="flex items-center gap-1 text-sm font-display tracking-tight text-accent"
           >
             <Image
               src="/icons/logo_color_64.png"
@@ -202,7 +202,7 @@ export function Navbar() {
               height={32}
               className="rounded-sm"
             />
-            <span className="text-lg">shota oniani</span>
+            <span className="text-xl font-display font-bold tracking-tighter">shota oniani</span>
           </Link>
 
           {/* Expandable touch area to the right of the brand opens the menu */}
@@ -252,7 +252,7 @@ export function Navbar() {
                 <div className="flex items-center mb-10 my-3 mt-0 justify-between">
                   <Link
                     href="/"
-                    className="flex items-center gap-2 text-lg font-display tracking-tight text-accent"
+                    className="flex items-center gap-1 text-lg font-display tracking-tight text-accent"
                   >
                     <Image
                       src="/icons/logo_color_64.png"
@@ -261,7 +261,7 @@ export function Navbar() {
                       height={32}
                       className="rounded-sm"
                     />
-                    <span>
+                    <span className="font-display font-bold tracking-tighter text-xl">
                       shota{" "}
                       <span className="text-sm text-accent-20">(sotiris)</span>{" "}
                       oniani
