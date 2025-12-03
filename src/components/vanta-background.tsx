@@ -25,7 +25,6 @@ interface VantaFogOptions {
   zoom?: number;
 }
 
-// Extend Window interface to include the libraries we are loading via CDN
 interface WindowWithVanta extends Window {
   THREE?: unknown;
   VANTA?: {
@@ -66,14 +65,14 @@ export function VantaBackground() {
         gyroControls: false,
         minHeight: 200.0,
         minWidth: 200.0,
-        scale: 50,
+        scale: 75,
         scaleMobile: 50,
         highlightColor: 0xe6eb8f,
         midtoneColor: 0x350f06,
         lowlightColor: 0x190702,
         baseColor: 0x270d04,
         blurFactor: 0.8,
-        speed: 0.75,
+        speed: 0.5,
         zoom: 0.35,
       });
     } catch (error) {
