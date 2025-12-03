@@ -35,9 +35,9 @@ export function Navbar() {
       <header
         className="
           sticky top-0 z-20 hidden md:block
-          bg-[color:var(--glass-bg)]
+          bg-(--glass-bg)
           backdrop-blur-md
-          supports-[backdrop-filter]:bg-[color:var(--glass-bg)]
+          supports-backdrop-filter:bg-(--glass-bg)
         "
       >
         <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -183,10 +183,10 @@ export function Navbar() {
       <div
         className="
           fixed bottom-0 inset-x-0 z-20 md:hidden
-          border-t border-[color:var(--glass-border)]
-          bg-[color:var(--glass-bg)]
+          border-t border-(--glass-border)
+          bg-(--glass-bg)
           backdrop-blur-md
-          supports-[backdrop-filter]:bg-[color:var(--glass-bg)]
+          supports-backdrop-filter:bg-(--glass-bg)
         "
       >
         <nav className="mx-auto flex h-14 max-w-3xl items-center px-4 sm:px-6 lg:px-8">
