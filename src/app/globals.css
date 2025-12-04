@@ -141,6 +141,9 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-display: var(--font-display);
+
+  /* Custom attributes */
+  --tracking-tightest: -0.075em;
 }
 
 body {
