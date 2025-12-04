@@ -65,15 +65,15 @@ export function VantaBackground() {
         gyroControls: false,
         minHeight: 200.0,
         minWidth: 200.0,
-        scale: 75,
+        scale: 30,
         scaleMobile: 50,
         highlightColor: 0x484930,
         midtoneColor: 0x350f06,
         lowlightColor: 0x350f06,
         baseColor: 0x190702,
         blurFactor: 0.8,
-        speed: 0.5,
-        zoom: 0.35,
+        speed: 0.2,
+        zoom: 0.3,
       });
     } catch (error) {
       console.error("[VANTA] Failed to initialize fog effect", error);

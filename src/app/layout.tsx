@@ -16,14 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-background text-foreground font-sans flex min-h-screen flex-col">
-        <VantaBackground />
+      <body className="antialiased bg-primary-50 text-foreground font-sans flex min-h-screen flex-col">
+        {/* <VantaBackground /> */}
 
         {/* Global nav */}
         <Navbar />
 
         {/* Page content + footer container */}
-        <div className="flex min-h-screen flex-col pb-14 md:pb-0">
+        <div className="flex min-h-screen bg-primary-50 flex-col pb-14 md:pb-0">
           {/* Main route content grows to push footer down */}
           <div className="flex-1">
             {children}

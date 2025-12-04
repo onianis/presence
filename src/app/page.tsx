@@ -3,55 +3,57 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <main className="w-full py-5 px-8 min-h-screen">
-        <div className="font-display font-light text-6xl text-accent-10 text-left">
-          what is
-        </div>
-        <div className="font-display font-bold tracking-tighter text-8xl text-accent text-left">
-          shota oniani
-        </div>
-        <div className="absolute w-full h-full top-0 left-0 flex items-center justify-center">
-          <div className="font-display font-bold tracking-wide text-9xl text-accent text-left">
-            creating
+      <main className="w-full min-h-screen flex flex-wrap place-content-between">
+        <div className="block">
+          <div className="font-display font-light text-6xl text-accent-10 text-left">
+            what is
+          </div>
+          <div className="font-display font-bold tracking-tighter text-8xl text-accent text-left">
+            shota oniani
+          </div>
+          <div className="absolute pointer-events-none w-full h-full top-0 left-0 flex items-center justify-center">
+            <div className="font-display font-bold tracking-wide text-5xl md:text-9xl text-accent text-left">
+              creating
+            </div>
+          </div>
+          <div className="font-display font-light text-6xl text-accent-10">
+            today?
           </div>
         </div>
-        <div className="font-display font-light text-6xl text-accent-10 text-right absolute bottom-0 right-0 my-40 mx-8">
-          today?
+        <div className="hidden md:flex flex-row flex-wrap w-full justify-around h-full px-5 mx-5 gap-y-5 md:gap-y-0 md:px-0 md:mx-0">
+          <Link
+            className="font-display font-light text-3xl md:text-5xl text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-b-2 hover:px-2 pb-1"
+            href="/resume"
+          >
+            resume
+          </Link>
+          <Link
+            className="font-display font-light text-3xl md:text-5xl text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-b-2 hover:px-2"
+            href="/projects"
+          >
+            projects
+          </Link>
+          <Link
+            className="font-display font-light text-3xl md:text-5xl text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-b-2 hover:px-2"
+            href="/blog"
+          >
+            blog
+          </Link>
+          <Link
+            className="font-display font-light text-3xl md:text-5xl text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-b-2 hover:px-2"
+            href="/hashes"
+          >
+            hashes
+          </Link>
+          <Link
+            className="font-display font-light text-3xl md:text-5xl text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-b-2 hover:px-2"
+            href="/about"
+          >
+            about
+          </Link>
         </div>
       </main>
 
-      <div className="flex flex-row flex-nowrap w-full justify-around absolute bottom-0">
-        <Link
-          className="flex h-12 w-full items-center justify-center rounded-full border border-border bg-primary-20 font-mono text-accent-1 px-5 transition-colors hover:bg-primary-10 md:w-[158px]"
-          href="/resume"
-        >
-          Resume
-        </Link>
-        <Link
-          className="flex h-12 w-full items-center justify-center rounded-full border border-border bg-primary-20 font-mono text-accent-1 px-5 transition-colors hover:bg-primary-10 md:w-[158px]"
-          href="/projects"
-        >
-          Projects
-        </Link>
-        <Link
-          className="flex h-12 w-full items-center justify-center rounded-full border border-border bg-primary-20 font-mono text-accent-1 px-5 transition-colors hover:bg-primary-10 md:w-[158px]"
-          href="/blog"
-        >
-          Blog
-        </Link>
-        <Link
-          className="flex h-12 w-full items-center justify-center rounded-full border border-border bg-primary-20 font-mono text-accent-1 px-5 transition-colors hover:bg-primary-10 md:w-[158px]"
-          href="/hashes"
-        >
-          Hashes
-        </Link>
-        <Link
-          className="flex h-12 w-full items-center justify-center rounded-full border border-border bg-primary-20 font-mono text-accent-1 px-5 transition-colors hover:bg-primary-10 md:w-[158px]"
-          href="/about"
-        >
-          About
-        </Link>
-      </div>
       <div className="mt-8" />
     </div>
   );

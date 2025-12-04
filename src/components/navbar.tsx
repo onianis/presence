@@ -23,22 +23,22 @@ export function Navbar() {
   const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
 
-  // Hide navbar on homepage
-  if (pathname === "/") {
-    return null;
-  }
-
   const closeMenu = () => setIsOpen(false);
 
   return (
     <>
       <header
-        className="
-          sticky top-0 z-20 hidden md:block
+        className={`
+          sticky top-0 z-20
+          ${
+            pathname === "/"
+              ? "hidden"           /* hide on all breakpoints on home */
+              : "hidden md:block"  /* hide on mobile, show on md+ elsewhere */
+          }
           bg-(--glass-bg)
           backdrop-blur-md
           supports-backdrop-filter:bg-(--glass-bg)
-        "
+        `}
       >
         <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 md:px-0">
           {/* Brand */}
