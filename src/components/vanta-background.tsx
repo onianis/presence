@@ -65,7 +65,7 @@ export function VantaBackground() {
         gyroControls: false,
         minHeight: 200.0,
         minWidth: 200.0,
-        scale: 30,
+        scale: 0.50,
         scaleMobile: 50,
         highlightColor: 0x484930,
         midtoneColor: 0x350f06,
