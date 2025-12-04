@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #270d04;
+  --background: #190702;
   --foreground: #f5f7d5;
 
   --glass-bg: rgba(39, 13, 4, 0.5); /* base background w/ alpha */
@@ -144,10 +144,66 @@
 
   /* Custom attributes */
   --tracking-tightest: -0.075em;
+
+  /* === Polka dot background controls === */
+  --polka-dot-size: 1px; /* radius / size of each dot */
+  --polka-dot-spacing-x: 35px; /* horizontal spacing between dots */
+  --polka-dot-spacing-y: 35px; /* vertical spacing between dots */
+  --polka-dot-color: rgba(245, 247, 213, 0.18); /* color/alpha of dots */
+  --polka-dot-bg: var(--background);
 }
 
 body {
-  background: var(--background);
+  background: var(--primary-50);
   color: var(--foreground);
   font-family: var(--font-sans);
+
+  background-color: var(--polka-dot-bg);
+  background-image: radial-gradient(
+    circle,
+    var(--polka-dot-color) var(--polka-dot-size),
+    transparent var(--polka-dot-size)
+  );
+  background-size: var(--polka-dot-spacing-x) var(--polka-dot-spacing-y);
+  background-repeat: repeat;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Base marquee styles (used via className) */
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.marquee-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  pointer-events: none; /* so it doesn’t intercept hero interactions */
+}
+
+.marquee-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--accent-20);
+  opacity: 0.8;
 }
