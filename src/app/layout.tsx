@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { VantaBackground } from "@/components/vanta-background";
 
 export const metadata: Metadata = {
   title: "shota oniani",
@@ -17,8 +16,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased bg-primary-50 text-foreground font-sans flex min-h-screen flex-col">
-        {/* <VantaBackground /> */}
-
         {/* Global nav */}
         <Navbar />
 
