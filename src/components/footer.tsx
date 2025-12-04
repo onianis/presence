@@ -108,7 +108,7 @@ export function Footer() {
               </span>
             </span>
             <span className="font-display text-sm md:text-lg">
-              all rights reserved ©2025
+              S.S.O Enterprises - all rights reserved ©2025
             </span>
           </div>
           <div className="flex flex-col justify-end text-accent-30 *:text-right *:hover:text-accent-10 *:transition-all *:duration-300 *:linear text-sm md:text-lg">
