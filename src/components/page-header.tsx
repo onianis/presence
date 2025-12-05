@@ -14,15 +14,29 @@ export function PageHeader({ title, subtitle, className }: PageHeaderProps) {
         className
       )}
     >
-      {/* Diagonal Lines Pattern Background */}
+      {/* Diagonal Lines Pattern Background - Mobile */}
       <div
-        className="absolute inset-0 z-0 opacity-20 pointer-events-none"
+        className="absolute inset-0 z-0 opacity-40 pointer-events-none md:hidden"
         style={{
           backgroundImage: `repeating-linear-gradient(
             -45deg,
             var(--accent-20),
-            var(--accent-20) 1px,
-            transparent 1px,
+            var(--accent-20) 2px,
+            transparent 2px,
+            transparent 12px
+          )`,
+        }}
+      />
+
+      {/* Diagonal Lines Pattern Background - Desktop */}
+      <div
+        className="absolute inset-0 z-0 opacity-20 pointer-events-none hidden md:block"
+        style={{
+          backgroundImage: `repeating-linear-gradient(
+            -45deg,
+            var(--accent-20),
+            var(--accent-20) 1.5px,
+            transparent 1.5px,
             transparent 12px
           )`,
         }}

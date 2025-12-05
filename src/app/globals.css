@@ -146,11 +146,20 @@
   --tracking-tightest: -0.075em;
 
   /* === Polka dot background controls === */
-  --polka-dot-size: 1px; /* radius / size of each dot */
-  --polka-dot-spacing-x: 35px; /* horizontal spacing between dots */
-  --polka-dot-spacing-y: 35px; /* vertical spacing between dots */
+  --polka-dot-size: 2px; /* radius / size of each dot */
+  --polka-dot-spacing-x: 30px; /* horizontal spacing between dots */
+  --polka-dot-spacing-y: 30px; /* vertical spacing between dots */
   --polka-dot-color: rgba(245, 247, 213, 0.18); /* color/alpha of dots */
   --polka-dot-bg: var(--background);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --polka-dot-size: 1px;
+    --polka-dot-spacing-x: 35px;
+    --polka-dot-spacing-y: 35px;
+    --polka-dot-color: rgba(245, 247, 213, 0.18);
+  }
 }
 
 body {
