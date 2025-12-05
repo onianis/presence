@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased text-foreground font-sans flex min-h-screen flex-col">
+      <body className="bg-primary-50 antialiased text-foreground font-sans flex min-h-screen flex-col">
         {/* Global nav */}
         <Navbar />
 

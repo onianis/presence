@@ -171,6 +171,7 @@ export default function Home() {
         md:justify-between           /* desktop: nav at top, hero centered in remaining space */
         md:py-8                      /* safe top/bottom padding for desktop */
         pt-10                        /* mobile top padding */
+        polka-bg
       "
       >
         <motion.nav
@@ -445,7 +446,7 @@ export default function Home() {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.30,
+                    staggerChildren: 0.3,
                     delayChildren: 0.25, // start slightly after nav
                   },
                 },
@@ -557,7 +558,7 @@ export default function Home() {
 
         {showScrollHint && (
           <motion.div
-            className="fixed inset-x-0 bottom-14 flex justify-end pr-3 md:hidden z-20"
+            className="fixed inset-x-0 bottom-15 flex justify-end pr-3 md:hidden z-20"
             variants={{
               hidden: { opacity: 0, y: 8 },
               visible: {
@@ -573,7 +574,7 @@ export default function Home() {
             animate="visible"
           >
             <motion.div
-              className="flex flex-col items-end gap-1"
+              className="relative flex flex-col items-end gap-1"
               animate={{ y: [0, -8, 0] }}
               transition={{
                 duration: 1.6,
@@ -581,10 +582,14 @@ export default function Home() {
                 ease: "easeInOut",
               }}
             >
-              <span className="text-xs tracking-tight text-accent-20 font-display text-right">
+              {/* Backdrop blur layer */}
+              <div className="absolute inset-0 -m-3 mb-0 backdrop-blur-xl bg-primary-50/20 rounded-2xl -z-10" />
+
+              {/* Existing content */}
+              <span className="text-xs tracking-tight text-accent-20 font-display text-right relative z-10">
                 tap here for <br /> <b>answers</b>
               </span>
-              <div className="flex flex-row items-center gap-0 opacity-80">
+              <div className="flex flex-row items-center gap-0 opacity-80 relative z-10">
                 <Image
                   src="/icons/nav_down_ledicon_64.png"
                   alt="Scroll down"

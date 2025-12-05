@@ -71,7 +71,7 @@ export default function ResumePage() {
           {/* Work Experience Placeholder */}
           <section>
             <h2 className="font-display text-3xl text-accent-10 mb-8 border-b border-accent-20/20 pb-2">
-              Work Experience
+              work experience
             </h2>
             <div className="grid gap-6">
               {/* Placeholder Card */}
@@ -87,7 +87,7 @@ export default function ResumePage() {
           {/* Education Placeholder */}
           <section>
             <h2 className="font-display text-3xl text-accent-10 mb-8 border-b border-accent-20/20 pb-2">
-              Education
+              education
             </h2>
             <div className="grid gap-6">
               <div className="p-8 border border-dashed border-accent-30/30 rounded-lg text-center text-accent-30 bg-primary-40/30">
@@ -99,7 +99,7 @@ export default function ResumePage() {
           {/* Certifications Placeholder */}
           <section>
             <h2 className="font-display text-3xl text-accent-10 mb-8 border-b border-accent-20/20 pb-2">
-              Certifications
+              certifications
             </h2>
             <div className="grid gap-6">
               <div className="p-8 border border-dashed border-accent-30/30 rounded-lg text-center text-accent-30 bg-primary-40/30">
@@ -111,7 +111,7 @@ export default function ResumePage() {
           {/* Projects Placeholder */}
           <section>
             <h2 className="font-display text-3xl text-accent-10 mb-8 border-b border-accent-20/20 pb-2">
-              Projects & Engagement
+              projects & engagement
             </h2>
             <div className="grid gap-6">
               <div className="p-8 border border-dashed border-accent-30/30 rounded-lg text-center text-accent-30 bg-primary-40/30">
@@ -123,7 +123,7 @@ export default function ResumePage() {
           {/* Languages Placeholder */}
           <section>
             <h2 className="font-display text-3xl text-accent-10 mb-8 border-b border-accent-20/20 pb-2">
-              Languages
+              languages
             </h2>
             <div className="flex flex-wrap gap-4">
               <div className="px-4 py-2 border border-dashed border-accent-30/30 rounded-full text-accent-30 bg-primary-40/30">
