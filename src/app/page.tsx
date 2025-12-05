@@ -80,6 +80,8 @@ export default function Home() {
 
   const [showScrollHint, setShowScrollHint] = useState(false);
 
+  const [desktopLineX, setDesktopLineX] = useState(0);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => {
@@ -92,7 +94,7 @@ export default function Home() {
 
         return nextIndex;
       });
-    }, 1500); // time between word changes
+    }, 2000); // time between word changes
 
     return () => clearInterval(interval);
   }, [verbs.length]);
@@ -151,84 +153,158 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowScrollHint(true);
+    }, 1000); // 1 second after page load
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Desktop hero line nudge on verb change
+  useEffect(() => {
+    // Only do this on md+ (desktop)
+    if (typeof window === "undefined") return;
+    if (window.innerWidth < 768) return;
+
+    // Start slightly left, then return to 0
+    setDesktopLineX(-100);
+
+    const id = requestAnimationFrame(() => {
+      // Let Framer interpolate to x: 0
+      setDesktopLineX(0);
+    });
+
+    return () => cancelAnimationFrame(id);
+  }, [index]);
+
   return (
     <div className="flex min-h-screen items-center justify-center">
       <main
         className="
-          w-full
-          min-h-[calc(100vh-3.5rem)]   /* 3.5rem = mobile bottom bar (h-14) */
-          flex flex-col
-          justify-start
-          md:p-10
-          pt-10
-        "
+        w-full
+        min-h-[calc(100vh-3.5rem)]   /* mobile: viewport minus bottom nav */
+        md:min-h-screen              /* desktop: full viewport height */
+        flex flex-col
+        justify-start                /* mobile: heroOffset controls centering */
+        md:justify-between           /* desktop: nav at top, hero centered in remaining space */
+        md:py-8                      /* safe top/bottom padding for desktop */
+        pt-10                        /* mobile top padding */
+      "
       >
-        <div className="hidden md:flex flex-row flex-wrap w-full justify-around h-full px-5 mx-5 mb-10 gap-y-5 md:gap-y-0 md:px-0 md:mx-0">
-          <Link
-            className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-            href="/resume"
-          >
-            resume
-          </Link>
-          <Link
-            className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-            href="/projects"
-          >
-            projects
-          </Link>
-          <Link
-            className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-            href="/blog"
-          >
-            blog
-          </Link>
-          <Link
-            className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-            href="/hashes"
-          >
-            hashes
-          </Link>
-          <Link
-            className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-            href="/about"
-          >
-            about
-          </Link>
-        </div>
+        <motion.nav
+          className="hidden md:flex flex-row flex-wrap w-full justify-around h-full px-5 mx-5 mb-10 gap-y-5 md:gap-y-0 md:px-0 md:mx-0"
+          variants={{
+            hidden: { opacity: 0, y: -8 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.25,
+                ease: "easeOut",
+              },
+            },
+          }}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
+            <Link
+              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
+              href="/resume"
+            >
+              resume
+            </Link>
+          </motion.div>
 
-        <div className="relative w-full">
-          <div
-            className="marquee-container top-0"
-            style={{ top: "-3.5rem" }} // tweak this offset as needed
-          >
-            <div
+          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
+            <Link
+              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
+              href="/projects"
+            >
+              projects
+            </Link>
+          </motion.div>
+
+          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
+            <Link
+              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
+              href="/blog"
+            >
+              blog
+            </Link>
+          </motion.div>
+
+          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
+            <Link
+              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
+              href="/hashes"
+            >
+              hashes
+            </Link>
+          </motion.div>
+
+          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
+            <Link
+              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
+              href="/about"
+            >
+              about
+            </Link>
+          </motion.div>
+        </motion.nav>
+
+        <div
+          className="
+          relative
+          w-full
+          md:flex
+          md:flex-col
+          md:items-center
+          md:justify-center
+          md:flex-1          /* take remaining height between nav and footer */
+        "
+        >
+          <div className="marquee-container -top-14 md:top-auto">
+            <motion.div
               className="marquee-track marquee-text"
               style={{
                 animation:
                   "marquee-left var(--marquee-duration, 30s) linear infinite",
               }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut", delay: 1 }}
             >
               {[
                 "ai security engineer",
                 "compsci @ uni tübingen",
-                "cybersecurity",
-                "offensive security",
+                "soc analyst",
+                "offensive security engineer",
+                "top 0.15% worldwide thm",
+                "assistant lecturer",
                 "civic engagement",
                 "open source contributor",
+                "flex finalist",
+                "project management tutor",
               ]
                 .join(" // ")
                 .concat(" // ")}
               {[
                 "ai security engineer",
                 "compsci @ uni tübingen",
-                "cybersecurity",
-                "offensive security",
+                "soc analyst",
+                "offensive security engineer",
+                "top 0.15% worldwide thm",
+                "assistant lecturer",
                 "civic engagement",
                 "open source contributor",
+                "flex finalist",
+                "project management tutor",
               ]
                 .join(" // ")
                 .concat(" // ")}
-            </div>
+            </motion.div>
           </div>
 
           {/* BOTTOM MARQUEE */}
@@ -267,7 +343,7 @@ export default function Home() {
           <motion.div
             ref={heroRef}
             style={{ marginTop: heroOffset }}
-            className="grid *:font-display w-full px-3"
+            className="grid *:font-display w-full px-3 md:hidden"
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -376,6 +452,127 @@ export default function Home() {
               today?
             </motion.div>
           </motion.div>
+
+          {/* ...existing marquee and mobile hero motion.div... */}
+
+          {/* Desktop hero (md+) */}
+          <div className="hidden md:flex items-center justify-center md:-translate-y-8">
+            <motion.div
+              layout
+              className="flex flex-col items-stretch *:font-display px-10"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15,
+                    delayChildren: 0.25, // start slightly after nav
+                  },
+                },
+              }}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+            >
+              {/* Top text */}
+              <motion.div
+                layout
+                variants={{
+                  hidden: { y: 30, opacity: 0 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.4, ease: "easeOut" },
+                  },
+                }}
+                className="self-start text-5xl lg:text-7xl text-accent-30"
+              >
+                what is
+              </motion.div>
+
+              {/* Center line: name + animated verb */}
+              <motion.div
+                layout
+                variants={{
+                  hidden: { y: 40, opacity: 0 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.5, ease: "easeOut" },
+                  },
+                }}
+                className="flex flex-row items-baseline gap-4 mx-auto"
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                <motion.div
+                  layout
+                  className="text-[5rem] lg:text-9xl tracking-tightest text-accent-10 md:pr-2 lg:pr-3"
+                >
+                  shota oniani
+                </motion.div>
+
+                <motion.div
+                  layout
+                  className="overflow-hidden inline-flex relative"
+                >
+                  <AnimatePresence initial={false} mode="popLayout">
+                    <motion.div
+                      key={verbs[index]}
+                      initial={{ y: "100%", opacity: 0 }}
+                      animate={{ y: "0%", opacity: 1 }}
+                      exit={{ y: "-100%", opacity: 0 }}
+                      transition={{
+                        duration: 0.2,
+                        ease: "easeInOut",
+                      }}
+                      className="
+                        text-[5rem]  
+                        lg:text-9xl
+                        tracking-tighter
+                        font-bold
+                        leading-none
+                        py-2
+                        flex
+                        items-center
+                        bg-linear-to-t
+                        from-(--verb-color)
+                        to-accent-soft
+                        bg-clip-text
+                        text-transparent
+                        pr-1
+                        md:pl-2
+                        lg:pl-3
+                        whitespace-nowrap
+                      "
+                      style={
+                        {
+                          "--verb-color": verbColor,
+                        } as React.CSSProperties
+                      }
+                    >
+                      {verbs[index]}
+                    </motion.div>
+                  </AnimatePresence>
+                </motion.div>
+              </motion.div>
+
+              {/* Bottom text */}
+              <motion.div
+                layout
+                variants={{
+                  hidden: { y: 30, opacity: 0 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    transition: { duration: 0.4, ease: "easeOut" },
+                  },
+                }}
+                className="self-end text-5xl lg:text-7xl text-accent-30"
+              >
+                today?
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
 
         {showScrollHint && (

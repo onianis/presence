@@ -207,3 +207,15 @@ body {
   color: var(--accent-20);
   opacity: 0.8;
 }
+
+@media (min-width: 768px) {
+  .marquee-container {
+    top: auto;          /* cancel the mobile top offset */
+    bottom: 0rem;       /* place near bottom of viewport on desktop */
+  }
+
+  .marquee-text {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+  }
+}
