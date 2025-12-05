@@ -458,7 +458,6 @@ export default function Home() {
           {/* Desktop hero (md+) */}
           <div className="hidden md:flex items-center justify-center md:-translate-y-8">
             <motion.div
-              layout
               className="flex flex-col items-stretch *:font-display px-10"
               variants={{
                 hidden: { opacity: 0 },
