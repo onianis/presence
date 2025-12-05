@@ -80,6 +80,16 @@ export default function Home() {
 
   const [showScrollHint, setShowScrollHint] = useState(false);
 
+  // Fix for mobile hero: static height calculation to prevent jitter and alignment issues
+  const [mobileHeight, setMobileHeight] = useState<string>(
+    "calc(100svh - 6rem)"
+  );
+
+  useEffect(() => {
+    const UPWARD_BIAS = 80;
+    setMobileHeight(`${window.innerHeight - 96 - UPWARD_BIAS}px`);
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => {
@@ -96,52 +106,6 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [verbs.length]);
-
-  useEffect(() => {
-    const MOBILE_NAVBAR_HEIGHT = 56; // h-14 -> 14 * 4px
-    const MD_BREAKPOINT = 768; // Tailwind md
-
-    function recomputeOffset() {
-      if (typeof window === "undefined") return;
-
-      // Only apply on mobile; let md+ be controlled purely by CSS
-      if (window.innerWidth >= MD_BREAKPOINT) {
-        setHeroOffset(0);
-        return;
-      }
-
-      if (!heroRef.current || !verbRef.current) {
-        setHeroOffset(0);
-        return;
-      }
-
-      const viewportHeight = window.innerHeight;
-      const usableHeight = viewportHeight - MOBILE_NAVBAR_HEIGHT;
-
-      const heroRect = heroRef.current.getBoundingClientRect();
-      const verbRect = verbRef.current.getBoundingClientRect();
-
-      // Center of verb relative to hero container
-      const verbCenter = verbRect.top - heroRect.top + verbRect.height / 2;
-
-      const desiredCenter = usableHeight / 2;
-
-      const offset = Math.max(0, desiredCenter - verbCenter);
-      setHeroOffset(offset);
-    }
-
-    // Initial compute
-    recomputeOffset();
-
-    // Recompute on resize / orientation change
-    window.addEventListener("resize", recomputeOffset);
-    window.addEventListener("orientationchange", recomputeOffset);
-
-    return () => {
-      window.removeEventListener("resize", recomputeOffset);
-      window.removeEventListener("orientationchange", recomputeOffset);
-    };
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -291,8 +255,12 @@ export default function Home() {
 
           <motion.div
             ref={heroRef}
-            style={{ marginTop: heroOffset }}
             className="grid *:font-display w-full px-3 md:hidden"
+            style={{
+              height: mobileHeight, // Static height prevents jitter
+              alignContent: "center", // Vertically centers the group
+              justifyItems: "start", // Left-aligns the text
+            }}
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -366,6 +334,7 @@ export default function Home() {
                     font-bold
                     leading-none
                     py-5
+                    pr-2
                     flex
                     items-center
                     bg-linear-to-t
@@ -401,8 +370,6 @@ export default function Home() {
               today?
             </motion.div>
           </motion.div>
-
-          {/* ...existing marquee and mobile hero motion.div... */}
 
           {/* Desktop hero (md+) */}
           <div className="hidden md:flex items-center justify-center md:-translate-y-8">
