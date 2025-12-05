@@ -289,39 +289,6 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* BOTTOM MARQUEE */}
-          {/* <div
-            className="marquee-container bottom-0"
-            style={{ bottom: "-15rem" }} // tweak this offset as needed
-          >
-            <div
-              className="marquee-track marquee-text"
-              style={{
-                animation:
-                  "marquee-right var(--marquee-duration, 30s) linear infinite",
-              }}
-            >
-              {[
-                "type-safe fanatic",
-                "framer tinkerer",
-                "css enjoyer",
-                "keyboard nerd",
-                "language learner",
-              ]
-                .join(" // ")
-                .concat(" // ")}
-              {[
-                "type-safe fanatic",
-                "framer tinkerer",
-                "css enjoyer",
-                "keyboard nerd",
-                "language learner",
-              ]
-                .join(" // ")
-                .concat(" // ")}
-            </div>
-          </div> */}
-
           <motion.div
             ref={heroRef}
             style={{ marginTop: heroOffset }}
