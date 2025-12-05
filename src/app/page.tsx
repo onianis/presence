@@ -89,14 +89,21 @@ export default function Home() {
 
   const [showScrollHint, setShowScrollHint] = useState(false);
 
-  // Fix for mobile hero: static height calculation to prevent jitter and alignment issues
-  const [mobileHeight, setMobileHeight] = useState<string>(
-    "calc(100svh - 6rem)"
-  );
-
+  // Fix for mobile hero: Use ref for direct DOM manipulation to avoid re-renders
   useEffect(() => {
-    const UPWARD_BIAS = 80;
-    setMobileHeight(`${window.innerHeight - 96 - UPWARD_BIAS}px`);
+    const updateHeight = () => {
+      if (heroRef.current) {
+        const UPWARD_BIAS = 80;
+        heroRef.current.style.height = `${window.innerHeight - 96 - UPWARD_BIAS}px`;
+      }
+    };
+
+    // Initial set
+    updateHeight();
+
+    // Add resize listener for robustness
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
   useEffect(() => {
@@ -266,11 +273,11 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <motion.div
+         <motion.div
             ref={heroRef}
             className="grid *:font-display w-full px-3 md:hidden"
             style={{
-              height: mobileHeight, // Static height prevents jitter
+              height: "calc(100svh - 6rem)", // Static fallback
               alignContent: "center", // Vertically centers the group
               justifyItems: "start", // Left-aligns the text
             }}
