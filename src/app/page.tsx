@@ -57,6 +57,14 @@ const VERB_COLORS = [
   "#212121",
 ];
 
+const NAV_LINKS = [
+  { href: "/resume", label: "resume" },
+  { href: "/projects", label: "projects" },
+  { href: "/blog", label: "blog" },
+  { href: "/hashes", label: "hashes" },
+  { href: "/about", label: "about" },
+];
+
 export default function Home() {
   const verbs = [
     "creating",
@@ -74,9 +82,10 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const [verbColor, setVerbColor] = useState<string>(VERB_COLORS[0]);
 
+  const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
+
   const heroRef = useRef<HTMLDivElement | null>(null);
   const verbRef = useRef<HTMLDivElement | null>(null);
-  const [heroOffset, setHeroOffset] = useState(0);
 
   const [showScrollHint, setShowScrollHint] = useState(false);
 
@@ -154,50 +163,54 @@ export default function Home() {
           initial="hidden"
           animate="visible"
         >
-          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
-            <Link
-              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-              href="/resume"
-            >
-              resume
-            </Link>
-          </motion.div>
+          {NAV_LINKS.map(({ href, label }) => {
+            const isHovered = hoveredLabel === label;
 
-          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
-            <Link
-              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-              href="/projects"
-            >
-              projects
-            </Link>
-          </motion.div>
+            return (
+              <motion.div
+                key={href}
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.15 }}
+              >
+                <Link
+                  className="relative inline-block font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
+                  href={href}
+                  onMouseEnter={() => setHoveredLabel(label)}
+                  onMouseLeave={() => setHoveredLabel(null)}
+                >
+                  <motion.span
+                    className="block"
+                    animate={
+                      isHovered
+                        ? { opacity: 0.15, scaleY: 0.9, scaleX: 1 }
+                        : { opacity: 1, scaleY: 1, scaleX: 1 }
+                    }
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                  >
+                    {label}
+                  </motion.span>
 
-          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
-            <Link
-              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-              href="/blog"
-            >
-              blog
-            </Link>
-          </motion.div>
-
-          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
-            <Link
-              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-              href="/hashes"
-            >
-              hashes
-            </Link>
-          </motion.div>
-
-          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
-            <Link
-              className="font-display font-light text-3xl md:text-[2.75rem] text-accent-20 md:text-accent-30 hover:md:text-accent transition-all duration-200 ease-in-out border-t-2 hover:px-2 hover:pt-4"
-              href="/about"
-            >
-              about
-            </Link>
-          </motion.div>
+                  <motion.span
+                    initial={false}
+                    animate={{
+                      opacity: isHovered ? 1 : 0,
+                      scale: isHovered ? 1.15 : 1,
+                    }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="pointer-events-none absolute inset-0 flex items-center justify-center"
+                  >
+                    <Image
+                      src={`/icons/nav_${label}_ledicon_64.png`}
+                      alt={`${label} icon`}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                  </motion.span>
+                </Link>
+              </motion.div>
+            );
+          })}
         </motion.nav>
 
         <div
