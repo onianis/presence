@@ -1,12 +1,12 @@
-export default function AboutPage() {
-  return (
-    <main className="min-h-screen flex items-center justify-center bg-primary-50 text-foreground">
-      <div className="space-y-4 text-center">
-        <h1 className="text-3xl font-semibold">Projects</h1>
-        <p className="text-slate-300">
-          Here are all my projects.
-        </p>
-      </div>
+import { PageHeader } from "@/components/page-header";
+
+export default function ProjectsPage() {
+return (
+    <main className="min-h-screen bg-primary-50 text-foreground pb-20">
+      <PageHeader
+        title="projects"
+        subtitle="my technical projects. theory put into practice."
+      />
     </main>
   );
 }

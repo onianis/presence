@@ -1,12 +1,12 @@
+import { PageHeader } from "@/components/page-header";
+
 export default function LegalPage() {
-  return (
-    <main className="min-h-screen flex items-center justify-center bg-primary-50 text-foreground">
-      <div className="space-y-4 text-center">
-        <h1 className="text-3xl font-semibold">Legal</h1>
-        <p className="text-slate-300">
-          German bureaucracy.
-        </p>
-      </div>
+return (
+    <main className="min-h-screen bg-primary-50 text-foreground pb-20">
+      <PageHeader
+        title="legal"
+        subtitle="i'd rather not get sued."
+      />
     </main>
   );
 }

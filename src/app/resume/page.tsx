@@ -7,7 +7,7 @@ export default function ResumePage() {
     <main className="min-h-screen bg-primary-50 text-foreground pb-20">
       <PageHeader
         title="resume"
-        subtitle="A comprehensive overview of my professional journey, skills, and qualifications."
+        subtitle="an overview of my professional journey, skills, and qualifications."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-0">

@@ -1,12 +1,12 @@
-export default function AboutPage() {
-  return (
-    <main className="min-h-screen flex items-center justify-center bg-primary-50 text-foreground">
-      <div className="space-y-4 text-center">
-        <h1 className="text-3xl font-semibold">Hashes</h1>
-        <p className="text-slate-300">
-          This page will house information about hashes from various published files.
-        </p>
-      </div>
+import { PageHeader } from "@/components/page-header";
+
+export default function HashesPage() {
+return (
+    <main className="min-h-screen bg-primary-50 text-foreground pb-20">
+      <PageHeader
+        title="hashes"
+        subtitle="received a file from me? here, you make sure that it hasn't been tampered with."
+      />
     </main>
   );
 }
