@@ -80,8 +80,6 @@ export default function Home() {
 
   const [showScrollHint, setShowScrollHint] = useState(false);
 
-  const [desktopLineX, setDesktopLineX] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => {
@@ -160,23 +158,6 @@ export default function Home() {
 
     return () => clearTimeout(timer);
   }, []);
-
-  // Desktop hero line nudge on verb change
-  useEffect(() => {
-    // Only do this on md+ (desktop)
-    if (typeof window === "undefined") return;
-    if (window.innerWidth < 768) return;
-
-    // Start slightly left, then return to 0
-    setDesktopLineX(-100);
-
-    const id = requestAnimationFrame(() => {
-      // Let Framer interpolate to x: 0
-      setDesktopLineX(0);
-    });
-
-    return () => cancelAnimationFrame(id);
-  }, [index]);
 
   return (
     <div className="flex min-h-screen items-center justify-center">
@@ -274,7 +255,7 @@ export default function Home() {
               }}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut", delay: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 1.75 }}
             >
               {[
                 "ai security engineer",
@@ -464,7 +445,7 @@ export default function Home() {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.15,
+                    staggerChildren: 0.30,
                     delayChildren: 0.25, // start slightly after nav
                   },
                 },
@@ -576,7 +557,7 @@ export default function Home() {
 
         {showScrollHint && (
           <motion.div
-            className="fixed inset-x-0 bottom-[3.5rem] flex justify-end pr-3 md:hidden z-20"
+            className="fixed inset-x-0 bottom-14 flex justify-end pr-3 md:hidden z-20"
             variants={{
               hidden: { opacity: 0, y: 8 },
               visible: {
